@@ -5,21 +5,20 @@ TEST_MESSAGE = """Hola {name}, te saluda Unilix 🎉
 📢 Estamos enviando mensajes de prueva, para verificar los numeros vinculado
 📌 Esperamos no sea una molestia 😁."""
 
-TEST = """
-🎉Hola {name}, te saludamos de la Academia YACHAYWASI🎉
-Apertura un ciclo especializado para la preparación para tu examen de preselección PRONBEC.
-🕣 HORARIO 🕣
-Lunes a viernes 
-4:00 p.m - 7:15 p.m
-🧾Sábados ✍
-    Simulacros 
+TEST = """Hola {name}, te saludamos de la Academia TONER 📚✨
 
-*Costo mensual S/80.00 soles*
-*Inicio de clases 20 de mayo*
-Informes e inscripciones 
-📲949 205 807
-📲946 301 605
-Jr.dos de mayo 707 ( 2º piso)"""
+Abrimos un ciclo SELECCION GENERAL
+🕣 HORARIO 🕣
+Lunes a viernes
+5:00 p.m - 8:00 p.m
+
+Costo mensual {pat_money} soles
+Inicio de clases {date_start}
+
+Informes e inscripciones
+{phones}
+{address}
+"""
 
 class msg:
     def __init__(self, para, mensaje, port):
