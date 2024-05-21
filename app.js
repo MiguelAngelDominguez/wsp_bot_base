@@ -55,7 +55,6 @@ app.post("/", async(req, res) => {
         // Enviar mensaje de texto y esperar a que se envíe
         await client.sendMessage(`51${numero}@c.us`, msg);
         
-
         // Esperar 3 segundos
         await sleep(1000);
 
