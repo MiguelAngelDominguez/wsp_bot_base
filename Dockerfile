@@ -56,12 +56,12 @@ EXPOSE 3000
 # CMD ["python", "runServer.py"]
 
 # ? Crear la imagen
-# docker build -t wsp_yachay/pyapp .
+# docker build -t wsp_base/pyapp .
 
 # ? Comando para construir la imagen
-# docker run -it -d -p 3000:3000 wsp_yachay/pyapp /bin/sh
+# docker run -it -d -p 3000:3000 wsp_base/pyapp /bin/sh
 
-# docker run --name bot_yachay_0 -it -d -p 4000:4000 wsp_yachay/pyapp /bin/sh
+# docker run --name wts_base_0 -it -d -p 4000:4000 wsp_base/pyapp /bin/sh
 
 # ? Buscar id de contenedor existente
 # docker ps -a
