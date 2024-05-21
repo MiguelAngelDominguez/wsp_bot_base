@@ -5,32 +5,43 @@ import time
 import threading
 import os 
 
-PATH_CSV = './database/date_yachay.csv'
-
 TEST_PATH = './database/test.csv'
 
-NUMBER_SV = 3   
+NUMBER_SV = 1
 
-MESSAGE = """🎉Hola {name}, te saludamos de la Academia YACHAYWASI🎉
-Apertura un ciclo especializado para la preparación para tu examen de preselección PRONBEC.
+MONEY_MSG = 800
+START_DATE = "12 de julio"
+PHONES = "📞 999 000 111 - 999 000 111"
+ADDRESS = "🏠 Jr. 28 de Julio 1098 4to piso"
+
+MESSAGE = """Hola {name}, te saludamos de la Academia TONER 📚✨
+
+Abrimos un ciclo SELECCION GENERAL
 🕣 HORARIO 🕣
-Lunes a viernes 
-4:00 p.m - 7:15 p.m
-🧾Sábados ✍
-    Simulacros 
+Lunes a viernes
+7:00 a.m - 8:00 p.m
 
-*Costo mensual S/80.00 soles*
-*Inicio de clases 20 de mayo*
-Informes e inscripciones 
-📲949 205 807
-📲946 301 605
-Jr.dos de mayo 707 ( 2º piso)"""
+Costo mensual {pay_money} soles
+Inicio de clases {date_start}
 
-TEST_MESSAGE = """
-Hola {name}, te saluda Unilix 🎉
-📢 Estamos enviando mensajes de prueva, para verificar los numeros vinculado
-📌 Esperamos no sea una molestia 😁.
+Informes e inscripciones
+{phones}
+{address}
 """
+
+TEST_MESSAGE = """Hola {name}, te saludamos de parte de Unilix y del Dev MiguelADV 🎉
+📢 Te queremos Informar que estamos haciendo Pruebas dentro y fuera de nuestro contexto.
+En los próximos minutos recibirás algunos menajes de pruebas para una academia externa a nosotros.
+Después de recibir este mensaje, te recomendamos silenciar este chat temporalmente.
+Gracias por tu tiempo y comprensión.
+"""
+
+def sleep(time_s= 1):
+    i = 0
+    while(time_s >= i):
+        time.sleep(1)
+        i += 1
+
 def divide_array(array, num_chips):
     # Calcula el tamaño de cada subarray
     chunk_size = len(array) // num_chips
@@ -48,16 +59,22 @@ def divide_array(array, num_chips):
 
 def forInArrayNumber(data, port):
     for date in data:
-        mensaje = send.msg(date[2], MESSAGE.format(name = date[1]), port)
+        mensaje = send.msg(date[2], MESSAGE.format(
+            name = date[1], 
+            pay_money = MONEY_MSG, 
+            date_start = START_DATE,
+            phones = PHONES,
+            address = ADDRESS
+            ), port)
         mensaje.sendMessage()
         print(f"Se envio mensaje a {date[2]} - {date[1]} por el puerto {port}")
         print("Delay de 15 segundos")
-        time.sleep(14)
+        sleep(14)
 
 def main():
-    data_unilix_test = csv.csvReader(PATH_CSV)
+    data_unilix_test = csv.csvReader(TEST_PATH)
     print(len(data_unilix_test.getData()))
-    data = data_unilix_test.getDatainRange(500, len(data_unilix_test.getData()))
+    data = data_unilix_test.getDatainRange()
     subarrays = divide_array(data, NUMBER_SV)
     i = 1
     for array in subarrays:
@@ -77,16 +94,21 @@ def main():
         hilo.join()
 
     
-def test():
+def test_unilix():
     data_unilix_test = csv.csvReader(TEST_PATH)
-    data = data_unilix_test.getData()
+    print(len(data_unilix_test.getData()))
+    data = data_unilix_test.getDatainRange()
     subarrays = divide_array(data, NUMBER_SV)
+    i = 1
     for array in subarrays:
-        print(array)   
+        tb.printTabla(array)
+        print(f"Subarray {i}")
+        i+=1
+        os.system("pause") 
     hilos = []
     i = 0
     for subarray in subarrays:
-        hilo = threading.Thread(target=forInArrayNumber, args=(subarray, 3000 + i))
+        hilo = threading.Thread(target=forInArrayNumber, args=(subarray, 4000 + i))
         hilos.append(hilo)
         hilo.start()
         i += 1
