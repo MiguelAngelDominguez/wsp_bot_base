@@ -11,7 +11,9 @@ class csvReader:
     def getData(self):
         return self.data_array
     
-    def getDatainRange(self, start, end):
+    def getDatainRange(self, start=0, end=0):
+        if end == 0:
+            end = len(self.data_array)
         return self.data_array[start:end]
 
     def printData(self):
