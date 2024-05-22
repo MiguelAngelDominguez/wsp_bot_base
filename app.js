@@ -53,13 +53,13 @@ const img_ubication = MessageMedia.fromFilePath("./ubicacion.jpg");
 const img_information = MessageMedia.fromFilePath("./informacion.jpg");
 
 client.on('message_create', async message =>{
-	if(message.body === '!informacion' || message.body === '!info' || message.body === '!INFORMACION' || message.body === '!INFO'){
+	if(message.body === '!informacion' || message.body === '!info' || message.body === '!INFORMACION' || message.body === '!INFO' || message.body === 'información' || message.body === 'informacion' || message.body === 'información'){
 		await sleep(2500)
 		client.sendMessage(message.from, img_information)
 		await sleep(1000)
 		client.sendMessage(message.from, informacion)
 	}
-	if(message.body === '!ubicacion' || message.body === '!UBICACION'){
+	if(message.body === '!ubicacion' || message.body === '!UBICACION' || message.body === '!ubicación'){
 		await sleep(2500)
 		client.sendMessage(message.from, img_ubication)
 		await sleep(1000)
