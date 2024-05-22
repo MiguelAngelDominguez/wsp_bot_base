@@ -73,7 +73,7 @@ function sleep(ms){
 	return new Promise(resolve => setTimeout(resolve,ms))
 }
 
-const msg_comands = `📌Tienes dispoonible los siguientes comandos:
+const msg_comands = `📌Tienes disponible los siguientes comandos:
 - !info: Muestra información de la academia
 - !ubicacion: Muestra la ubicación de la academia`
 
