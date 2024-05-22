@@ -38,6 +38,30 @@ client.on("ready", () => {
 	console.log(`ESTÁ LISTO WSP! EN EL PUERTO ${port}`);
 });
 
+client.on("message_create", async (message) => {
+	if (message.body === "ubication") {
+		// TODO: LOG PARA SABER QUE NÚMEROS PREGUNTARON
+		await sleep(3000); // 3 segundos
+
+
+		// TODO: ENVIAR MENSAJES IMAGEN O TEXT
+		client.sendMessage(message.from, "Estamos en la región de Lima, Perú");
+	}
+
+	// TODO: MÁS MENSAJES
+	// if (message.body === "image") {
+	// 	const media = MessageMedia.fromFilePath("./image.jpg");
+	// 	await client.sendMessage(message.from, media);
+	// }
+
+});
+
+client.on("message", async (message) => {
+	if (message.body === "Hola") {
+		await message.reply("Hola! ¿En qué puedo ayudarte?");
+	}
+})
+
 client.initialize();
 
 function sleep(ms){

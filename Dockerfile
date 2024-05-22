@@ -53,7 +53,7 @@ RUN pnpm install
 EXPOSE 3000
 
 # Comando para ejecutar tu aplicación
-# CMD ["python", "runServer.py"]
+# CMD ["node", "app.js", "3000"]
 
 # ? Crear la imagen
 # docker build -t wsp_base/pyapp .
