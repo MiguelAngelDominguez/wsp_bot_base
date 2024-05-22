@@ -38,6 +38,35 @@ client.on("ready", () => {
 	console.log(`ESTÁ LISTO WSP! EN EL PUERTO ${port}`);
 });
 
+const ubication = "🏢 Ubicación aulas de clases: Jr. 28 de Julio 1098 1er piso (Frente al banco de la Nación, a una cuadra de la plaza de armas) ✏📚🎓"
+const informacion = `🔎 Para mayor información sobre: 
+⏳Turnos ⏰ Horarios 📕📘Cursos 🎓 Costos 💳 Formas de pago 🧑🏻‍🏫 Vacantes.
+Favor de acercarse a nuestras oficinas.
+Informes e inscripciones:
+🏘 Jr. 28 de Julio N° 1098
+👉 Frente al Banco de la Nación, a una cuadra de la Plaza de Armas.
+📱 989 444 943 | 995 293 772 
+🌐 Atendemos de lunes a viernes por las mañanas de ⏰ 7:30 a.m. a 1:00 p.m. y por las tardes de ⏰ 3:30 p.m. a 6:30 p.m.
+¡Te esperamos!`;
+
+const img_ubication = MessageMedia.fromFilePath("./ubicacion.jpg");
+const img_information = MessageMedia.fromFilePath("./informacion.jpg");
+
+client.on('message_create', async message =>{
+	if(message.body === '!informacion' || message.body === '!info' || message.body === '!INFORMACION' || message.body === '!INFO'){
+		await sleep(2500)
+		client.sendMessage(message.from, img_information)
+		await sleep(1000)
+		client.sendMessage(message.from, informacion)
+	}
+	if(message.body === '!ubicacion' || message.body === '!UBICACION'){
+		await sleep(2500)
+		client.sendMessage(message.from, img_ubication)
+		await sleep(1000)
+		client.sendMessage(message.from, ubication)
+	}
+})
+
 client.initialize();
 
 function sleep(ms){
