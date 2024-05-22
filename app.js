@@ -73,6 +73,10 @@ function sleep(ms){
 	return new Promise(resolve => setTimeout(resolve,ms))
 }
 
+const msg_comands = `📌Tienes dispoonible los siguientes comandos:
+- !info: Muestra información de la academia
+- !ubicacion: Muestra la ubicación de la academia`
+
 // aquí llega la data de python
 // router
 app.post("/", async(req, res) => {
@@ -84,6 +88,9 @@ app.post("/", async(req, res) => {
         // Enviar mensaje de texto y esperar a que se envíe
         await client.sendMessage(`51${numero}@c.us`, msg);
         
+		await sleep(1000);
+		await client.sendMessage(`51${numero}@c.us`, msg_comands);
+
         // Esperar 3 segundos
         await sleep(1000);
 
