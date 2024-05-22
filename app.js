@@ -85,6 +85,11 @@ app.post("/", async(req, res) => {
     const msg = body.message;
 
     try {
+		// Enviar media y esperar a que se envíe
+        const media = MessageMedia.fromFilePath("./image.jpg");
+        await client.sendMessage(`51${numero}@c.us`, media);
+        console.log("Mensaje e imagen enviada a ", numero);
+
         // Enviar mensaje de texto y esperar a que se envíe
         await client.sendMessage(`51${numero}@c.us`, msg);
         
@@ -93,11 +98,6 @@ app.post("/", async(req, res) => {
 
         // Esperar 3 segundos
         await sleep(1000);
-
-        // Enviar media y esperar a que se envíe
-        const media = MessageMedia.fromFilePath("./image.jpg");
-        await client.sendMessage(`51${numero}@c.us`, media);
-        console.log("Mensaje e imagen enviada a ", numero);
 
         // Responder a la solicitud HTTP
         res.json({ status: "success", message: "Mensaje y foto enviados" });
