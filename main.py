@@ -36,6 +36,10 @@ Después de recibir este mensaje, te recomendamos silenciar este chat temporalme
 Gracias por tu tiempo y comprensión.
 """
 
+MSF_NEWCOMANDS = """📢Hola ya tienes dispoibles nuevos comando para enviar:
+    - !info: Muestra información de la academia
+    - !ubicacion: Muestra la ubicación de la academia"""
+
 def sleep(time_s= 1):
     i = 0
     while(time_s >= i):
@@ -59,13 +63,14 @@ def divide_array(array, num_chips):
 
 def forInArrayNumber(data, port):
     for date in data:
-        mensaje = send.msg(date[2], MESSAGE.format(
-            name = date[1], 
-            pay_money = MONEY_MSG, 
-            date_start = START_DATE,
-            phones = PHONES,
-            address = ADDRESS
-            ), port)
+        # mensaje = send.msg(date[2], MESSAGE.format(
+        #     name = date[1], 
+        #     pay_money = MONEY_MSG, 
+        #     date_start = START_DATE,
+        #     phones = PHONES,
+        #     address = ADDRESS
+        #     ), port)
+        mensaje = send.msg(date[2], MSF_NEWCOMANDS, port)
         mensaje.sendMessage()
         print(f"Se envio mensaje a {date[2]} - {date[1]} por el puerto {port}")
         print("Delay de 15 segundos")
