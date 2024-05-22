@@ -41,6 +41,8 @@ WORKDIR /app
 
 # Copia tu aplicación al contenedor (Asegúrate de tener un directorio 'app' con tu código)
 COPY image.jpg /app
+COPY informacion.jpg /app
+COPY ubicacion.jpg /app
 COPY app.js /app
 COPY package*.json /app
 COPY pnpm-lock.yaml /app
