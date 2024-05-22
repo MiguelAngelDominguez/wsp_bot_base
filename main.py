@@ -36,9 +36,27 @@ Después de recibir este mensaje, te recomendamos silenciar este chat temporalme
 Gracias por tu tiempo y comprensión.
 """
 
-MSF_NEWCOMANDS = """📢Hola ya tienes dispoibles nuevos comando para enviar:
-    - !info: Muestra información de la academia
-    - !ubicacion: Muestra la ubicación de la academia"""
+MSG_TORNER = """💥 PARTICIPA‼ GRATIS 🙂
+CONCURSO DE BECAS ✏📚
+
+📣 Ciclo TODO EL DÍA ⏰☝
+Clases 💯 %PRESENCIALES
+
+💥 INSCRÍBETE AQUÍ: 👇
+▶ https://bit.ly/44zZ6QD ◀
+
+🗒 Jueves 23 mayo
+⏰ 4:30 p.m.
+
+📌 Lugar
+🏢 Jr. 28 de Julio N° 1098 - 4to piso | Frente al Banco de la Nación, a una cuadra de la Plaza de Armas. 
+
+🔥 No olvides llevar lápiz ✏, borrador y tú DNI.
+
+👉 ÚNETE A LA PRE MÁS GRANDE DE LA REGIÓN 👊 
+
+🎓 Tu mejor garantía:
+NUESTROS CACHIMBOS‼"""
 
 def sleep(time_s= 1):
     i = 0
@@ -70,11 +88,11 @@ def forInArrayNumber(data, port):
         #     phones = PHONES,
         #     address = ADDRESS
         #     ), port)
-        mensaje = send.msg(date[2], MSF_NEWCOMANDS, port)
+        mensaje = send.msg(date[2], MSG_TORNER, port)
         mensaje.sendMessage()
         print(f"Se envio mensaje a {date[2]} - {date[1]} por el puerto {port}")
         print("Delay de 15 segundos")
-        sleep(14)
+        sleep(13)
 
 def main():
     data_unilix_test = csv.csvReader(TEST_PATH)
