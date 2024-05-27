@@ -40,10 +40,25 @@ client.on('ready', async () => {
     console.log('Client is ready!');
 
     const csvFiles = [
-        './database/test.csv',
+        './database/SMS1.csv',
+        './database/SMS2.csv',
+        './database/SMS3.csv',
+        './database/SMS4.csv',
+        './database/SMS5.csv',
+        './database/SMS6.csv',
+        './database/SMS7.csv',
+        './database/SMS8.csv',
+        './database/SMS9.csv'
     ];
 
     const results = [];
+
+    const isRegisteredWithTimeout = (chatId, timeout = 500) => {
+        return Promise.race([
+            client.isRegisteredUser(chatId),
+            new Promise((resolve) => setTimeout(() => resolve(true), timeout))
+        ]);
+    };
 
     for (const file of csvFiles) {
         await new Promise((resolve, reject) => {
@@ -52,20 +67,20 @@ client.on('ready', async () => {
                 .pipe(csv())
                 .on('data', (row) => {
                     const number = row.Celular;
-                    const chatId = number + '@c.us';
+                    const chatId = '51' + number + '@c.us';
 
                     const promise = limit(async () => {
                         try {
                             // const contact = await client.getContactById(chatId);
                             // const isRegistered = contact.isWAContact;
-                            const isRegistered = await client.isRegisteredUser(chatId);
+                            const isRegistered = await isRegisteredWithTimeout(chatId);
                             console.log('LLego la promesa', isRegistered);
                             if(isRegistered === false){
                                 results.push({ number, isRegistered });
                             }
-                            console.log(`El numero ${number} esta ${isRegistered ? 'registrado' : 'no registrado'} en WhatsApp.`);
+                            console.log(`El numero ${chatId} esta ${isRegistered ? 'registrado' : 'no registrado'} en WhatsApp.`);
                         } catch (error) {
-                            console.error(`Error al verificar el número ${number}:`, error);
+                            console.log(`Error al verificar el número ${number}:`, error);
                             results.push({ number, error: error.message });
                         }
                     });
